@@ -1,0 +1,26 @@
+/**
+ * @param {string} s
+ * @return {string}
+ */
+var longestPalindrome = function(str) {
+  let result = '';
+    if (str.length < 2) return str;
+
+  //let result = '';
+    
+  for (let i = 0; i < str.length - 1; i++) {
+    
+    result = [result, expand(str, i, i), expand(str, i, i + 1)] 
+    .reduce((pre, cur) => pre.length > cur.length ? pre : cur);
+  }
+
+  return result;
+}
+
+
+function expand(str, left, right) {
+  while (left >= 0 && right < str.length && str[left] === str[right]) {
+    left--, right++;
+  }
+  return str.substring(left + 1, right); // $left and $right will be exceeded by 1 until this moment, so we need to shrink it by one before return
+}

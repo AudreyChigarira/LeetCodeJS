@@ -1,0 +1,36 @@
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+/*var twoSum = function(nums, target) {
+    
+var number = {};
+var integers = [];
+var iCount = 0;
+    
+while(iCount < nums.length) 
+{
+number[nums[iCount]] = [iCount,target - nums[iCount]];
+    
+if(number[target - nums[iCount]]&& number[target - nums[iCount]][0]!=iCount) 
+{
+integers[0] = number[target - nums[iCount]][0];
+integers[1] = iCount;
+}
+iCount++;
+}
+return integers;
+};
+*/
+const twoSum = function(nums, target) {
+    const comp = {};
+    for(let i=0; i<nums.length; i++){
+        if(comp[nums[i] ]>=0){
+            return [ comp[nums[i] ] , i]
+        }
+        comp[target-nums[i]] = i
+    }
+};
+
+    
